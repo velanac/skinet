@@ -14,7 +14,7 @@ namespace API
     public class Startup
     {
         private readonly IConfiguration _config;
-        
+
         public Startup(IConfiguration config)
         {
             _config = config;
@@ -29,8 +29,10 @@ namespace API
             x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddApplicaionServices();
             services.AddSwaggerDocumentation();
-            services.AddCors(opt => {
-                opt.AddPolicy("CorsPolicy", policy => {
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
             });
